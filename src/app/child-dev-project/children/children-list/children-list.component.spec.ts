@@ -10,7 +10,7 @@ import { ChildrenService } from "../children.service";
 import { RouterTestingModule } from "@angular/router/testing";
 import { ExportDataComponent } from "../../../core/admin/export-data/export-data.component";
 import { SessionService } from "../../../core/session/session-service/session.service";
-import { of } from "rxjs";
+import { EMPTY, of } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ChildrenModule } from "../children.module";
 import { Angulartics2Module } from "angulartics2";
@@ -91,7 +91,7 @@ describe("ChildrenListComponent", () => {
       mockEntityMapper.loadType.and.resolveTo([]);
       const mockSessionService = jasmine.createSpyObj(["getCurrentUser"]);
       mockSessionService.getCurrentUser.and.returnValue(new User("test1"));
-      mockChildrenService.getChildren.and.returnValue(of([]));
+      mockChildrenService.getChildren.and.returnValue(EMPTY);
       TestBed.configureTestingModule({
         declarations: [ChildrenListComponent, ExportDataComponent],
 
@@ -139,7 +139,7 @@ describe("ChildrenListComponent", () => {
   it("should load children on init", fakeAsync(() => {
     const child1 = new Child("c1");
     const child2 = new Child("c2");
-    mockChildrenService.getChildren.and.returnValue(of([child1, child2]));
+    mockChildrenService.getChildren.and.returnValue(of(child1, child2));
     component.ngOnInit();
     tick();
     expect(mockChildrenService.getChildren).toHaveBeenCalled();

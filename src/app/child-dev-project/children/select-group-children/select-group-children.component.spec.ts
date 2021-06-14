@@ -1,22 +1,31 @@
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+  waitForAsync,
+} from "@angular/core/testing";
 import { SelectGroupChildrenComponent } from "./select-group-children.component";
 import { ChildrenService } from "../children.service";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, of, Subject } from "rxjs";
 import { Child } from "../model/child";
 import { ChildrenModule } from "../children.module";
 import { RouterTestingModule } from "@angular/router/testing";
+import { mergeMap } from "rxjs/operators";
 
 describe("SelectGroupChildrenComponent", () => {
   let component: SelectGroupChildrenComponent;
   let fixture: ComponentFixture<SelectGroupChildrenComponent>;
 
   let mockChildrenService;
-  const mockChildrenObservable = new BehaviorSubject([]);
+  const mockChildrenObservable = new BehaviorSubject<Child[]>([]);
 
   beforeEach(
     waitForAsync(() => {
       mockChildrenService = jasmine.createSpyObj(["getChildren"]);
-      mockChildrenService.getChildren.and.returnValue(mockChildrenObservable);
+      mockChildrenService.getChildren.and.returnValue(
+        mockChildrenObservable.pipe(mergeMap((x: Child[]) => x))
+      );
 
       TestBed.configureTestingModule({
         declarations: [SelectGroupChildrenComponent],
@@ -28,7 +37,7 @@ describe("SelectGroupChildrenComponent", () => {
     })
   );
 
-  beforeEach(() => {
+  beforeEach(async () => {
     fixture = TestBed.createComponent(SelectGroupChildrenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -38,17 +47,19 @@ describe("SelectGroupChildrenComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  it("should extract all centers", () => {
+  it("should extract all centers", fakeAsync(() => {
     const mockChildren = [new Child("0"), new Child("1")];
     mockChildren[0].center = { id: "a", label: "Center A" };
     mockChildren[1].center = { id: "b", label: "Center B" };
 
-    mockChildrenObservable.next(mockChildren);
+    mockChildrenService.getChildren.and.returnValue(of(mockChildren));
+    component.ngOnInit();
+    tick();
 
     expect(component.centerFilters.options.length).toBe(3);
-  });
+  }));
 
-  it("should extract all schools of selected center", () => {
+  it("should extract all schools of selected center", fakeAsync(() => {
     const selectedCenter = { id: "a", label: "Center A" };
     const mockChildren = [
       new Child("0"),
@@ -63,7 +74,9 @@ describe("SelectGroupChildrenComponent", () => {
     mockChildren[3].center = { id: "c", label: "other center" };
     mockChildren[3].schoolId = "School:3";
 
-    mockChildrenObservable.next(mockChildren);
+    mockChildrenService.getChildren.and.returnValue(of(mockChildren));
+    component.ngOnInit();
+    tick();
 
     component.selectCenterFilter(
       component.centerFilters.options.find(
@@ -74,9 +87,9 @@ describe("SelectGroupChildrenComponent", () => {
     expect(component.schoolFilters.options.length).toBe(3); // includes default option "all schools"
     expect(component.schoolFilters.options[1].key).toBe("School:1");
     expect(component.schoolFilters.options[2].key).toBe("School:2");
-  });
+  }));
 
-  it("should not list empty filter for undefined schools", () => {
+  it("should not list empty filter for undefined schools", fakeAsync(() => {
     const selectedCenter = { id: "a", label: "Center A" };
     const mockChildren = [new Child("0"), new Child("1")];
     mockChildren[0].center = selectedCenter;
@@ -84,7 +97,9 @@ describe("SelectGroupChildrenComponent", () => {
     mockChildren[1].center = selectedCenter;
     // mockChildren[1].schoolId is not set
 
-    mockChildrenObservable.next(mockChildren);
+    mockChildrenService.getChildren.and.returnValue(of(mockChildren));
+    component.ngOnInit();
+    tick();
 
     component.selectCenterFilter(
       component.centerFilters.options.find(
@@ -94,9 +109,9 @@ describe("SelectGroupChildrenComponent", () => {
 
     expect(component.schoolFilters.options.length).toBe(2); // includes default option "all schools"
     expect(component.schoolFilters.options[1].key).toBe("School:1");
-  });
+  }));
 
-  it("should emit selected children correctly filtered by center and school", () => {
+  it("should emit selected children correctly filtered by center and school", fakeAsync(() => {
     const selectedCenter = { id: "a", label: "Center A" };
     const selectedSchool = "School:1";
 
@@ -108,7 +123,9 @@ describe("SelectGroupChildrenComponent", () => {
     mockChildren[2].center = { id: "c", label: "other center" };
     mockChildren[2].schoolId = selectedSchool;
 
-    mockChildrenObservable.next(mockChildren);
+    mockChildrenService.getChildren.and.returnValue(of(mockChildren));
+    component.ngOnInit();
+    tick();
 
     spyOn(component.valueChange, "emit");
 
@@ -123,9 +140,9 @@ describe("SelectGroupChildrenComponent", () => {
     component.confirmSelectedChildren();
 
     expect(component.valueChange.emit).toHaveBeenCalledWith([mockChildren[0]]);
-  });
+  }));
 
-  it("should emit all children of center for default filter", () => {
+  it("should emit all children of center for default filter", fakeAsync(() => {
     const selectedCenter = { id: "a", label: "Center A" };
 
     const mockChildren = [new Child("0"), new Child("1"), new Child("2")];
@@ -136,7 +153,9 @@ describe("SelectGroupChildrenComponent", () => {
     mockChildren[2].center = { id: "c", label: "other center" };
     mockChildren[2].schoolId = "School:1";
 
-    mockChildrenObservable.next(mockChildren);
+    mockChildrenService.getChildren.and.returnValue(of(mockChildren));
+    component.ngOnInit();
+    tick();
 
     spyOn(component.valueChange, "emit");
 
@@ -154,5 +173,5 @@ describe("SelectGroupChildrenComponent", () => {
       mockChildren[0],
       mockChildren[1],
     ]);
-  });
+  }));
 });

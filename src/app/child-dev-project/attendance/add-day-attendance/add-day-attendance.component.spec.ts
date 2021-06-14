@@ -6,7 +6,7 @@ import { Note } from "../../notes/model/note";
 import { AttendanceModule } from "../attendance.module";
 import { RouterTestingModule } from "@angular/router/testing";
 import { ChildrenService } from "../../children/children.service";
-import { of } from "rxjs";
+import { EMPTY, of } from "rxjs";
 import { SessionService } from "../../../core/session/session-service/session.service";
 import { User } from "../../../core/user/user";
 import { MatNativeDateModule } from "@angular/material/core";
@@ -31,7 +31,7 @@ describe("AddDayAttendanceComponent", () => {
       mockChildrenService = jasmine.createSpyObj("mockChildrenService", [
         "getChildren",
       ]);
-      mockChildrenService.getChildren.and.returnValue(of([]));
+      mockChildrenService.getChildren.and.returnValue(EMPTY);
 
       TestBed.configureTestingModule({
         imports: [AttendanceModule, RouterTestingModule, MatNativeDateModule],

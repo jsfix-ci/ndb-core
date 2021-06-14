@@ -1,5 +1,5 @@
 import { Injectable, Optional } from "@angular/core";
-import { from, Observable, Subject } from "rxjs";
+import { from, Observable } from "rxjs";
 import { Child } from "./model/child";
 import { EntityMapperService } from "../../core/entity/entity-mapper.service";
 import { AttendanceMonth } from "../attendance/model/attendance-month";
@@ -15,6 +15,8 @@ import moment, { Moment } from "moment";
 import { LoggingService } from "../../core/logging/logging.service";
 import { DatabaseIndexingService } from "../../core/entity/database-indexing/database-indexing.service";
 import { QueryOptions } from "../../core/database/database";
+import { fromPromise } from "rxjs/internal-compatibility";
+import { concatMap, mergeMap, tap } from "rxjs/operators";
 
 @Injectable()
 export class ChildrenService {
@@ -41,30 +43,24 @@ export class ChildrenService {
   }
 
   /**
-   * returns an observable which retrieves children from the database and loads their pictures
+   * returns an observable which retrieves children from the database
    */
-  getChildren(): Observable<Child[]> {
-    const results = new Subject<Child[]>();
-
-    this.entityMapper.loadType<Child>(Child).then(async (loadedChildren) => {
-      results.next(loadedChildren);
-
-      for (const loadedChild of loadedChildren) {
-        const childCurrentSchoolInfo = await this.getCurrentSchoolInfoForChild(
-          loadedChild.getId()
-        );
-        await this.migrateToNewChildSchoolRelationModel(
-          loadedChild,
-          childCurrentSchoolInfo
-        );
-        loadedChild.schoolClass = childCurrentSchoolInfo.schoolClass;
-        loadedChild.schoolId = childCurrentSchoolInfo.schoolId;
-      }
-      results.next(loadedChildren);
-      results.complete();
-    });
-
-    return results;
+  getChildren(): Observable<Child> {
+    return fromPromise(this.entityMapper.loadType(Child)).pipe(
+      tap((children) =>
+        children.sort(
+          (a, b) => Number(a.projectNumber) - Number(b.projectNumber)
+        )
+      ),
+      mergeMap((x) => x), // Child[] -> Emit multiple children
+      concatMap(async (child, index) => {
+        const info = await this.getCurrentSchoolInfoForChild(child.getId());
+        await this.migrateToNewChildSchoolRelationModel(child, info);
+        child.schoolClass = info.schoolClass;
+        child.schoolId = info.schoolId;
+        return child;
+      })
+    );
   }
 
   /**

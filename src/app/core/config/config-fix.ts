@@ -166,6 +166,9 @@ export const defaultJsonConfig = {
           "component": "ChildrenCountDashboard"
         },
         {
+          component: "ChildrenBmiDashboardComponent"
+        },
+        {
           "component": "RecentNotesDashboard"
         },
         {

@@ -10,6 +10,7 @@ import moment from "moment";
 import { Database } from "../../core/database/database";
 import { Note } from "../notes/model/note";
 import { PouchDatabase } from "../../core/database/pouch-database";
+import { toArray } from "rxjs/operators";
 
 describe("ChildrenService", () => {
   let service: ChildrenService;
@@ -46,10 +47,16 @@ describe("ChildrenService", () => {
   });
 
   it("should list newly saved children", async () => {
-    const childrenBefore = await service.getChildren().toPromise();
+    const childrenBefore = await service
+      .getChildren()
+      .pipe(toArray())
+      .toPromise();
     const child = new Child("10");
     await entityMapper.save<Child>(child);
-    const childrenAfter = await service.getChildren().toPromise();
+    const childrenAfter = await service
+      .getChildren()
+      .pipe(toArray())
+      .toPromise();
 
     let find = childrenBefore.find((c) => c.getId() === child.getId());
     expect(find).toBeUndefined();
@@ -79,7 +86,7 @@ describe("ChildrenService", () => {
   // TODO: test getAttendances
 
   it("should find latest ChildSchoolRelation of a child", async () => {
-    const children = await service.getChildren().toPromise();
+    const children = await service.getChildren().pipe(toArray()).toPromise();
     const promises: Promise<any>[] = [];
     expect(children.length).toBeGreaterThan(0);
     children.forEach((child) =>
@@ -91,6 +98,7 @@ describe("ChildrenService", () => {
   it("should return ChildSchoolRelations of child in correct order", (done: DoneFn) => {
     service
       .getChildren()
+      .pipe(toArray())
       .toPromise()
       .then((children) => {
         const promises: Promise<any>[] = [];
@@ -147,7 +155,7 @@ describe("ChildrenService", () => {
   });
 
   it("should load all children with school info", async () => {
-    const children = await service.getChildren().toPromise();
+    const children = await service.getChildren().pipe(toArray()).toPromise();
     const child1 = children.find((child) => child.getId() === "1");
     expect(child1.schoolClass).toBe("2");
     expect(child1.schoolId).toBe("1");

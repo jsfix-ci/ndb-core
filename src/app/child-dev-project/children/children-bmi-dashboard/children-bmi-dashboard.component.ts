@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { HealthCheck } from "../../health-checkup/model/health-check";
 import { WarningLevel } from "../../warning-level";
 import { OnInitDynamicComponent } from "../../../core/view/dynamic-components/on-init-dynamic-component.interface";
-import { take } from "rxjs/operators";
+import { concatMap, filter, map } from "rxjs/operators";
 import { ChildrenService } from "../children.service";
 import { Child } from "../model/child";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+import { Observable } from "rxjs";
 
 interface BmiRow {
   childId: string;
@@ -17,9 +18,10 @@ interface BmiRow {
   templateUrl: "./children-bmi-dashboard.component.html",
   styleUrls: ["./children-bmi-dashboard.component.scss"],
 })
+@UntilDestroy()
 export class ChildrenBmiDashboardComponent
-  implements OnInit, OnInitDynamicComponent {
-  public currentHealthCheck: HealthCheck;
+  implements OnInit, OnInitDynamicComponent
+{
   bmiRows: BmiRow[] = [];
 
   constructor(
@@ -30,40 +32,38 @@ export class ChildrenBmiDashboardComponent
   ngOnInit(): void {
     this.childrenService
       .getChildren()
-      .pipe(take(1))
-      .subscribe((results) => {
-        this.filterBMI(results);
+      .pipe(
+        untilDestroyed(this),
+        concatMap((child) => this.rowForChildId(child.getId()))
+      )
+      .subscribe((row) => {
+        this.bmiRows = [row].concat(this.bmiRows);
       });
+  }
+
+  rowForChildId(childId: string): Observable<BmiRow> {
+    return this.childrenService.getHealthChecksOfChild(childId).pipe(
+      map((healthChecks) => {
+        if (healthChecks.length > 0) {
+          const latestCheck = healthChecks.reduce((prev, cur) =>
+            cur.date > prev.date ? cur : prev
+          );
+          if (latestCheck.getWarningLevel() === WarningLevel.URGENT) {
+            return { childId: childId, bmi: latestCheck.bmi };
+          } else {
+            return null;
+          }
+        } else {
+          return null;
+        }
+      }),
+      filter((next) => next !== null)
+    );
   }
 
   onInitFromDynamicConfig(config: any) {}
 
   recordTrackByFunction = (index, item) => item.childId;
-
-  filterBMI(children: Child[]) {
-    children.forEach((child) => {
-      this.childrenService
-        .getHealthChecksOfChild(child.getId())
-        .pipe()
-        .subscribe((results) => {
-          /** get newest HealtCheck */
-          if (results.length > 0) {
-            this.currentHealthCheck = results.reduce((prev, cur) =>
-              cur.date > prev.date ? cur : prev
-            );
-            /**Check health status */
-            if (
-              this.currentHealthCheck.getWarningLevel() === WarningLevel.URGENT
-            ) {
-              this.bmiRows.push({
-                childId: child.getId(),
-                bmi: this.currentHealthCheck.bmi,
-              });
-            }
-          }
-        });
-    });
-  }
 
   goToChild(childId: string) {
     const path = "/" + Child.ENTITY_TYPE.toLowerCase();

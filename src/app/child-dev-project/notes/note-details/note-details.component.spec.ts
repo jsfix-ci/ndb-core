@@ -1,7 +1,7 @@
 import { NoteDetailsComponent } from "./note-details.component";
 import { Note } from "../model/note";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { of } from "rxjs";
+import { EMPTY, of } from "rxjs";
 import { MatNativeDateModule } from "@angular/material/core";
 import { ChildrenService } from "../../children/children.service";
 import { NotesModule } from "../notes.module";
@@ -45,7 +45,7 @@ describe("NoteDetailsComponent", () => {
       "getChildren",
       "getChild",
     ]);
-    mockChildrenService.getChildren.and.returnValue(of([]));
+    mockChildrenService.getChildren.and.returnValue(EMPTY);
     mockChildrenService.getChild.and.returnValue(of(new Child("")));
 
     const dialogRefMock = { beforeClosed: () => of(), close: () => {} };

@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { ChildrenService } from "../children.service";
 import { Router } from "@angular/router";
 import { OnInitDynamicComponent } from "../../../core/view/dynamic-components/on-init-dynamic-component.interface";
-import { take } from "rxjs/operators";
 import { ConfigurableEnumValue } from "../../../core/configurable-enum/configurable-enum.interface";
 import { Child } from "../model/child";
+import { EntityMapperService } from "../../../core/entity/entity-mapper.service";
 
 @Component({
   selector: "app-children-count-dashboard",
@@ -24,7 +23,7 @@ export class ChildrenCountDashboardComponent
   childrenGroupCounts: { label: string; value: number }[] = [];
 
   constructor(
-    private childrenService: ChildrenService,
+    private entityMapperService: EntityMapperService,
     public router: Router
   ) {}
 
@@ -34,13 +33,9 @@ export class ChildrenCountDashboardComponent
     }
   }
 
-  ngOnInit() {
-    this.childrenService
-      .getChildren()
-      .pipe(take(1)) // only take the initial result, no need for updated details
-      .subscribe((results) => {
-        this.updateCounts(results);
-      });
+  async ngOnInit() {
+    const children = await this.entityMapperService.loadType(Child);
+    this.updateCounts(children);
   }
 
   goToChildrenList(filterString: string) {

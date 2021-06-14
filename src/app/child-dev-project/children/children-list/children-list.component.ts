@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Child } from "../model/child";
 import { ActivatedRoute, Router } from "@angular/router";
-import { UntilDestroy } from "@ngneat/until-destroy";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { ChildrenService } from "../children.service";
 import { FilterSelectionOption } from "../../../core/filter/filter-selection/filter-selection";
 import {
@@ -41,14 +41,17 @@ export class ChildrenListComponent implements OnInit {
     private log: LoggingService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.route.data.subscribe(
       (config: EntityListConfig) => (this.listConfig = config)
     );
-    this.childrenService.getChildren().subscribe((children) => {
-      this.childrenList = children;
-      this.addPrebuiltFilters();
-    });
+    this.childrenService
+      .getChildren()
+      .pipe(untilDestroyed(this))
+      .subscribe((child) => {
+        this.childrenList = [child].concat(this.childrenList);
+      });
+    await this.addPrebuiltFilters();
   }
 
   routeTo(route: string) {
@@ -62,7 +65,8 @@ export class ChildrenListComponent implements OnInit {
     )) {
       switch (prebuiltFilter.id) {
         case "school": {
-          (prebuiltFilter as PrebuiltFilterConfig<Child>).options = await this.buildSchoolFilter();
+          (prebuiltFilter as PrebuiltFilterConfig<Child>).options =
+            await this.buildSchoolFilter();
           (prebuiltFilter as PrebuiltFilterConfig<Child>).default = "";
           break;
         }

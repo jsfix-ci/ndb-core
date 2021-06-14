@@ -12,15 +12,15 @@ import { MatIconModule } from "@angular/material/icon";
 import { ChildrenService } from "../children.service";
 import { RouterTestingModule } from "@angular/router/testing";
 import { Center, Child } from "../model/child";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { ConfigurableEnumValue } from "../../../core/configurable-enum/configurable-enum.interface";
+import { EntityMapperService } from "../../../core/entity/entity-mapper.service";
 
 describe("ChildrenCountDashboardComponent", () => {
   let component: ChildrenCountDashboardComponent;
   let fixture: ComponentFixture<ChildrenCountDashboardComponent>;
 
-  let childrenService;
-  let childrenObserver;
+  let entityMapperService;
 
   let _lastId = 0;
   function createChild(center: Center) {
@@ -32,17 +32,15 @@ describe("ChildrenCountDashboardComponent", () => {
 
   beforeEach(
     waitForAsync(() => {
-      childrenService = jasmine.createSpyObj(["getChildren"]);
-      childrenService.getChildren.and.returnValue(
-        new Observable((observer) => {
-          childrenObserver = observer;
-        })
-      );
+      entityMapperService = jasmine.createSpyObj(["loadType"]);
+      entityMapperService.loadType.and.resolveTo([]);
 
       TestBed.configureTestingModule({
         declarations: [ChildrenCountDashboardComponent],
         imports: [MatIconModule, MatCardModule, RouterTestingModule],
-        providers: [{ provide: ChildrenService, useValue: childrenService }],
+        providers: [
+          { provide: EntityMapperService, useValue: entityMapperService },
+        ],
       }).compileComponents();
     })
   );
@@ -57,18 +55,19 @@ describe("ChildrenCountDashboardComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  it("should calculate totalChildren correctly", () => {
+  it("should calculate totalChildren correctly", async () => {
     const children = [
       createChild({ id: "a", label: "CenterA" }),
       createChild({ id: "b", label: "CenterB" }),
       createChild({ id: "a", label: "CenterA" }),
     ];
-    childrenObserver.next(children);
+    entityMapperService.loadType.and.resolveTo(children);
+    await component.ngOnInit();
 
     expect(component.totalChildren).toBe(3);
   });
 
-  it("should calculate childrens per center correctly", fakeAsync(() => {
+  it("should calculate childrens per center correctly", async () => {
     const centerA = { id: "a", label: "CenterA" };
     const centerB = { id: "b", label: "CenterB" };
     const children = [
@@ -77,8 +76,8 @@ describe("ChildrenCountDashboardComponent", () => {
       createChild(centerA),
     ];
 
-    childrenObserver.next(children);
-    flush();
+    entityMapperService.loadType.and.resolveTo(children);
+    await component.ngOnInit();
 
     expect(component.childrenGroupCounts.length).toBe(
       2,
@@ -98,9 +97,9 @@ describe("ChildrenCountDashboardComponent", () => {
       1,
       "child count of CenterB not correct"
     );
-  }));
+  });
 
-  it("should groupBy enum values and display label", fakeAsync(() => {
+  it("should groupBy enum values and display label", async () => {
     const testGroupBy = "test";
     component.groupBy = testGroupBy;
 
@@ -111,8 +110,8 @@ describe("ChildrenCountDashboardComponent", () => {
     children[1][testGroupBy] = c2;
     children[2][testGroupBy] = c1;
 
-    childrenObserver.next(children);
-    flush();
+    entityMapperService.loadType.and.resolveTo(children);
+    await component.ngOnInit();
 
     expect(component.childrenGroupCounts.length).toBe(3);
     expect(component.childrenGroupCounts).toContain({
@@ -123,5 +122,5 @@ describe("ChildrenCountDashboardComponent", () => {
       label: c2.label,
       value: 1,
     });
-  }));
+  });
 });

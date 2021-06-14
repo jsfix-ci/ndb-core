@@ -6,6 +6,7 @@ import {
   FilterSelectionOption,
 } from "../../../core/filter/filter-selection/filter-selection";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+import { toArray } from "rxjs/operators";
 
 /**
  * Use this component in your template to allow the user to select a group of children.
@@ -36,12 +37,10 @@ export class SelectGroupChildrenComponent implements OnInit {
   ngOnInit() {
     this.childrenService
       .getChildren()
-      .pipe(untilDestroyed(this))
+      .pipe(untilDestroyed(this), toArray())
       .subscribe((children) => {
         this.children = children.filter((c) => c.isActive);
-        this.centerFilters.options = this.loadCenterFilterOptions(
-          this.children
-        );
+        this.centerFilters.options = this.loadCenterFilterOptions(children);
       });
   }
 
