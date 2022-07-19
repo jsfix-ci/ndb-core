@@ -1,0 +1,1510 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ndb-core documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ndb-core documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  RollCallSetupComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-roll-call-setup</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./roll-call-setup.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./roll-call-setup.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allActivities" >allActivities</a>
+                            </li>
+                            <li>
+                                <a href="#date" >date</a>
+                            </li>
+                            <li>
+                                <a href="#dateField" >dateField</a>
+                            </li>
+                            <li>
+                                <a href="#existingEvents" >existingEvents</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#FILTER_VISIBLE_THRESHOLD" >FILTER_VISIBLE_THRESHOLD</a>
+                            </li>
+                            <li>
+                                <a href="#filteredExistingEvents" >filteredExistingEvents</a>
+                            </li>
+                            <li>
+                                <a href="#filterSettings" >filterSettings</a>
+                            </li>
+                            <li>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                <a href="#showingAll" >showingAll</a>
+                            </li>
+                            <li>
+                                <a href="#visibleActivities" >visibleActivities</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#applyFilter" >applyFilter</a>
+                            </li>
+                            <li>
+                                <a href="#createOneTimeEvent" >createOneTimeEvent</a>
+                            </li>
+                            <li>
+                                <a href="#selectEvent" >selectEvent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#setNewDate" >setNewDate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#showLess" >showLess</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#showMore" >showMore</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#eventSelected" >eventSelected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(entityMapper: <a href="../injectables/EntityMapperService.html" target="_self">EntityMapperService</a>, attendanceService: <a href="../injectables/AttendanceService.html" target="_self">AttendanceService</a>, sessionService: <a href="../classes/SessionService.html" target="_self">SessionService</a>, formDialog: <a href="../injectables/FormDialogService.html" target="_self">FormDialogService</a>, filterGenerator: <a href="../injectables/FilterGeneratorService.html" target="_self">FilterGeneratorService</a>, alertService: <a href="../injectables/AlertService.html" target="_self">AlertService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>entityMapper</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/EntityMapperService.html" target="_self" >EntityMapperService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>attendanceService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AttendanceService.html" target="_self" >AttendanceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sessionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/SessionService.html" target="_self" >SessionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formDialog</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FormDialogService.html" target="_self" >FormDialogService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>filterGenerator</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FilterGeneratorService.html" target="_self" >FilterGeneratorService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AlertService.html" target="_self" >AlertService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventSelected"></a>
+                        <b>eventSelected</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyFilter"></a>
+                    <span class="name">
+                        <span ><b>applyFilter</b></span>
+                        <a href="#applyFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyFilter(selectedFilter: <a href="../interfaces/FilterComponentSettings.html" target="_self">FilterComponentSettings&lt;Note&gt;</a>, optionKey: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="198"
+                            class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:198</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>selectedFilter</td>
+                                    <td>
+                                                <code><a href="../interfaces/FilterComponentSettings.html" target="_self" >FilterComponentSettings&lt;Note&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>optionKey</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createOneTimeEvent"></a>
+                    <span class="name">
+                        <span ><b>createOneTimeEvent</b></span>
+                        <a href="#createOneTimeEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createOneTimeEvent()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="157"
+                            class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:157</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectEvent"></a>
+                    <span class="name">
+                        <span ><b>selectEvent</b></span>
+                        <a href="#selectEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectEvent(event: <a href="../classes/Note.html" target="_self">NoteForActivitySetup</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:206</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="../classes/Note.html" target="_self" >NoteForActivitySetup</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setNewDate"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>setNewDate</b></span>
+                        <a href="#setNewDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setNewDate(date: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>date</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showLess"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>showLess</b></span>
+                        <a href="#showLess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showLess()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showMore"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>showMore</b></span>
+                        <a href="#showMore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>showMore()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allActivities"></a>
+                    <span class="name">
+                        <span ><b>allActivities</b></span>
+                        <a href="#allActivities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/RecurringActivity.html" target="_self" >RecurringActivity[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="date"></a>
+                    <span class="name">
+                        <span ><b>date</b></span>
+                        <a href="#date"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Date()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dateField"></a>
+                    <span class="name">
+                        <span ><b>dateField</b></span>
+                        <a href="#dateField"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/NgModel" target="_blank" >NgModel</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;dateField&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="existingEvents"></a>
+                    <span class="name">
+                        <span ><b>existingEvents</b></span>
+                        <a href="#existingEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Note.html" target="_self" >NoteForActivitySetup[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FILTER_VISIBLE_THRESHOLD"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>FILTER_VISIBLE_THRESHOLD</b></span>
+                        <a href="#FILTER_VISIBLE_THRESHOLD"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>4</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>filters are displayed in the UI only if at least this many events are listed.</p>
+<p>This avoids displaying irrelevant filters for an empty or very short list.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredExistingEvents"></a>
+                    <span class="name">
+                        <span ><b>filteredExistingEvents</b></span>
+                        <a href="#filteredExistingEvents"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Note.html" target="_self" >NoteForActivitySetup[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterSettings"></a>
+                    <span class="name">
+                        <span ><b>filterSettings</b></span>
+                        <a href="#filterSettings"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/FilterComponentSettings.html" target="_self" >FilterComponentSettings&lt;Note&gt;[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showingAll"></a>
+                    <span class="name">
+                        <span ><b>showingAll</b></span>
+                        <a href="#showingAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visibleActivities"></a>
+                    <span class="name">
+                        <span ><b>visibleActivities</b></span>
+                        <a href="#visibleActivities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/RecurringActivity.html" target="_self" >RecurringActivity[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/child-dev-project/attendance/add-day-attendance/roll-call-setup/roll-call-setup.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from &quot;@angular/core&quot;;
+import { AttendanceService } from &quot;../../attendance.service&quot;;
+import { Note } from &quot;../../../notes/model/note&quot;;
+import { EntityMapperService } from &quot;../../../../core/entity/entity-mapper.service&quot;;
+import { RecurringActivity } from &quot;../../model/recurring-activity&quot;;
+import { SessionService } from &quot;../../../../core/session/session-service/session.service&quot;;
+import { NoteDetailsComponent } from &quot;../../../notes/note-details/note-details.component&quot;;
+import { FormDialogService } from &quot;../../../../core/form-dialog/form-dialog.service&quot;;
+import { FilterComponentSettings } from &quot;../../../../core/entity-components/entity-list/filter-component.settings&quot;;
+import { FilterGeneratorService } from &quot;../../../../core/entity-components/entity-list/filter-generator.service&quot;;
+import { AlertService } from &quot;../../../../core/alerts/alert.service&quot;;
+import { AlertDisplay } from &quot;../../../../core/alerts/alert-display&quot;;
+import { NgModel } from &quot;@angular/forms&quot;;
+
+@Component({
+  selector: &quot;app-roll-call-setup&quot;,
+  templateUrl: &quot;./roll-call-setup.component.html&quot;,
+  styleUrls: [&quot;./roll-call-setup.component.scss&quot;],
+})
+export class RollCallSetupComponent implements OnInit {
+  date &#x3D; new Date();
+
+  existingEvents: NoteForActivitySetup[] &#x3D; [];
+  filteredExistingEvents: NoteForActivitySetup[] &#x3D; [];
+
+  @Output() eventSelected &#x3D; new EventEmitter&lt;Note&gt;();
+
+  allActivities: RecurringActivity[] &#x3D; [];
+  visibleActivities: RecurringActivity[] &#x3D; [];
+  filterSettings: FilterComponentSettings&lt;Note&gt;[] &#x3D; [];
+
+  showingAll &#x3D; false;
+
+  @ViewChild(&quot;dateField&quot;) dateField: NgModel;
+
+  isLoading &#x3D; true;
+
+  /**
+   * filters are displayed in the UI only if at least this many events are listed.
+   *
+   * This avoids displaying irrelevant filters for an empty or very short list.
+   */
+  readonly FILTER_VISIBLE_THRESHOLD &#x3D; 4;
+
+  constructor(
+    private entityMapper: EntityMapperService,
+    private attendanceService: AttendanceService,
+    private sessionService: SessionService,
+    private formDialog: FormDialogService,
+    private filterGenerator: FilterGeneratorService,
+    private alertService: AlertService
+  ) {}
+
+  async ngOnInit() {
+    await this.initAvailableEvents();
+  }
+
+  private async initAvailableEvents() {
+    this.isLoading &#x3D; true;
+    this.existingEvents &#x3D; await this.attendanceService.getEventsOnDate(
+      this.date
+    );
+    await this.loadActivities();
+    await this.updateEventsList();
+    this.isLoading &#x3D; false;
+  }
+
+  private async loadActivities() {
+    this.allActivities &#x3D; await this.entityMapper.loadType(RecurringActivity);
+
+    if (this.showingAll) {
+      this.visibleActivities &#x3D; this.allActivities;
+    } else {
+      this.visibleActivities &#x3D; this.allActivities.filter((a) &#x3D;&gt;
+        a.isAssignedTo(this.sessionService.getCurrentUser().name)
+      );
+      if (this.visibleActivities.length &#x3D;&#x3D;&#x3D; 0) {
+        this.visibleActivities &#x3D; this.allActivities.filter(
+          (a) &#x3D;&gt; a.assignedTo.length &#x3D;&#x3D;&#x3D; 0
+        );
+      }
+    }
+
+    for (const activity of this.visibleActivities) {
+      const newEvent &#x3D; await this.createEventForActivity(activity);
+      if (newEvent) {
+        this.existingEvents.push(newEvent);
+      }
+    }
+  }
+
+  async showMore() {
+    this.showingAll &#x3D; !this.showingAll;
+    await this.initAvailableEvents();
+  }
+
+  async showLess() {
+    this.showingAll &#x3D; !this.showingAll;
+    await this.initAvailableEvents();
+  }
+
+  async setNewDate(date: Date) {
+    this.date &#x3D; date;
+
+    await this.initAvailableEvents();
+  }
+
+  private async createEventForActivity(
+    activity: RecurringActivity
+  ): Promise&lt;NoteForActivitySetup&gt; {
+    if (this.existingEvents.find((e) &#x3D;&gt; e.relatesTo &#x3D;&#x3D;&#x3D; activity._id)) {
+      return undefined;
+    }
+
+    const event &#x3D; (await this.attendanceService.createEventForActivity(
+      activity,
+      this.date
+    )) as NoteForActivitySetup;
+    event.authors &#x3D; [this.sessionService.getCurrentUser().name];
+    event.isNewFromActivity &#x3D; true;
+    return event;
+  }
+
+  private sortEvents() {
+    const calculateEventPriority &#x3D; (event: Note) &#x3D;&gt; {
+      let score &#x3D; 0;
+
+      const activityAssignedUsers &#x3D; this.allActivities.find(
+        (a) &#x3D;&gt; a._id &#x3D;&#x3D;&#x3D; event.relatesTo
+      )?.assignedTo;
+      // use parent activities&#x27; assigned users and only fall back to event if necessary
+      const assignedUsers &#x3D; activityAssignedUsers ?? event.authors;
+
+      if (!RecurringActivity.isActivityEventNote(event)) {
+        // show one-time events first
+        score +&#x3D; 1;
+      }
+
+      if (assignedUsers.includes(this.sessionService.getCurrentUser().name)) {
+        score +&#x3D; 2;
+      }
+
+      return score;
+    };
+
+    this.existingEvents.sort(
+      (a, b) &#x3D;&gt; calculateEventPriority(b) - calculateEventPriority(a)
+    );
+  }
+
+  createOneTimeEvent() {
+    const newNote &#x3D; Note.create(new Date());
+    newNote.authors &#x3D; [this.sessionService.getCurrentUser().name];
+
+    this.formDialog
+      .openDialog(NoteDetailsComponent, newNote)
+      .afterClosed()
+      .subscribe((createdNote: Note) &#x3D;&gt; {
+        if (createdNote) {
+          this.existingEvents.push(createdNote);
+        }
+      });
+  }
+
+  private async updateEventsList() {
+    await this.updateFilterOptions();
+    this.filterExistingEvents();
+    this.sortEvents();
+  }
+
+  private async updateFilterOptions() {
+    this.filterSettings &#x3D; await this.filterGenerator.generate(
+      [{ id: &quot;category&quot; }, { id: &quot;schools&quot; }],
+      Note,
+      this.existingEvents,
+      true
+    );
+  }
+
+  private filterExistingEvents() {
+    let filteredEvents &#x3D; this.existingEvents;
+    for (const filter of this.filterSettings) {
+      const filterFun &#x3D; filter.filterSettings.getFilterFunction(
+        filter.selectedOption
+      );
+      filteredEvents &#x3D; filteredEvents.filter(filterFun);
+    }
+
+    this.filteredExistingEvents &#x3D; filteredEvents;
+  }
+
+  applyFilter(
+    selectedFilter: FilterComponentSettings&lt;Note&gt;,
+    optionKey: string
+  ) {
+    selectedFilter.selectedOption &#x3D; optionKey;
+    this.filterExistingEvents();
+  }
+
+  selectEvent(event: NoteForActivitySetup) {
+    if (this.dateField.valid) {
+      this.eventSelected.emit(event);
+    } else {
+      this.alertService.addWarning(
+        $localize&#x60;:Alert when selected date is invalid:Invalid Date&#x60;,
+        AlertDisplay.TEMPORARY
+      );
+    }
+  }
+}
+
+type NoteForActivitySetup &#x3D; Note &amp; { isNewFromActivity?: boolean };
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;overall-container&quot;&gt;
+  &lt;div class&#x3D;&quot;top-control primary-background&quot;&gt;
+    &lt;mat-form-field&gt;
+      &lt;mat-label
+        i18n&#x3D;&quot;
+          Event-Record label|Record an event for a particular date that is to be
+          inputted
+        &quot;
+        &gt;Date
+      &lt;/mat-label&gt;
+      &lt;input
+        matInput
+        #dateField&#x3D;&quot;ngModel&quot;
+        [(ngModel)]&#x3D;&quot;date&quot;
+        required
+        [matDatepicker]&#x3D;&quot;datePicker&quot;
+        (dateChange)&#x3D;&quot;setNewDate($event.value)&quot;
+      /&gt;
+      &lt;mat-datepicker-toggle
+        matSuffix
+        [for]&#x3D;&quot;datePicker&quot;
+        angulartics2On&#x3D;&quot;click&quot;
+        angularticsCategory&#x3D;&quot;Record Attendance&quot;
+        angularticsAction&#x3D;&quot;select_date&quot;
+      &gt;&lt;/mat-datepicker-toggle&gt;
+      &lt;mat-datepicker #datePicker&gt;&lt;/mat-datepicker&gt;
+    &lt;/mat-form-field&gt;
+
+    &lt;div
+      *ngIf&#x3D;&quot;existingEvents.length &gt;&#x3D; FILTER_VISIBLE_THRESHOLD&quot;
+      fxLayout&#x3D;&quot;row wrap&quot;
+      fxLayoutGap&#x3D;&quot;8px&quot;
+    &gt;
+      &lt;app-list-filter
+        *ngFor&#x3D;&quot;let filter of filterSettings&quot;
+        [filterConfig]&#x3D;&quot;filter.filterSettings&quot;
+        [(selectedOption)]&#x3D;&quot;filter.selectedOption&quot;
+        (selectedOptionChange)&#x3D;&quot;applyFilter(filter, $event)&quot;
+        angulartics2On&#x3D;&quot;click&quot;
+        angularticsCategory&#x3D;&quot;Record Attendance&quot;
+        angularticsAction&#x3D;&quot;filter&quot;
+        [angularticsLabel]&#x3D;&quot;filter.filterSettings.label&quot;
+      &gt;
+      &lt;/app-list-filter&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;isLoading&quot; class&#x3D;&quot;process-spinner&quot;&gt;
+    &lt;mat-progress-bar mode&#x3D;&quot;indeterminate&quot;&gt;&lt;/mat-progress-bar&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;flex-scroll-container&quot; *ngIf&#x3D;&quot;!isLoading&quot;&gt;
+    &lt;div class&#x3D;&quot;cards-list&quot;&gt;
+      &lt;app-activity-card
+        class&#x3D;&quot;activity-card&quot;
+        *ngFor&#x3D;&quot;let event of filteredExistingEvents&quot;
+        [event]&#x3D;&quot;event&quot;
+        [recurring]&#x3D;&quot;event.isNewFromActivity&quot;
+        (click)&#x3D;&quot;selectEvent(event)&quot;
+      &gt;
+      &lt;/app-activity-card&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;actions&quot;&gt;
+      &lt;button
+        mat-stroked-button
+        (click)&#x3D;&quot;showingAll ? showLess() : showMore()&quot;
+        angulartics2On&#x3D;&quot;click&quot;
+        angularticsCategory&#x3D;&quot;Record Attendance&quot;
+        angularticsAction&#x3D;&quot;show_more&quot;
+      &gt;
+        &lt;span *ngIf&#x3D;&quot;showingAll&quot; i18n&#x3D;&quot;Show less entries of a list&quot;&gt;
+          Show less
+        &lt;/span&gt;
+        &lt;span *ngIf&#x3D;&quot;!showingAll&quot; i18n&#x3D;&quot;Show more entries of a list&quot;&gt;
+          Show more
+        &lt;/span&gt;
+      &lt;/button&gt;
+      &lt;button
+        i18n&#x3D;&quot;Not listed|Allows to create a new event&quot;
+        mat-button
+        (click)&#x3D;&quot;createOneTimeEvent()&quot;
+        angulartics2On&#x3D;&quot;click&quot;
+        angularticsCategory&#x3D;&quot;Record Attendance&quot;
+        angularticsAction&#x3D;&quot;create_onetime_event&quot;
+      &gt;
+        My event is not listed ...
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./roll-call-setup.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../../../styles&quot;;
+@import &quot;../../../../utils/grid-layout&quot;;
+
+// Total height of the bottom control with padding
+$bottom-control-height: 86px;
+$bottom-control-padding: 16px;
+
+.overall-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // remove the bottom margin so that scrolling to the bottom
+  // doesn&#x27;t overflow
+  margin-bottom: -$margin-main-view-bottom;
+}
+
+.top-control {
+  position: sticky;
+  top: 0;
+  // make this visible while other contents go &quot;under&quot;
+  // this top control
+  z-index: 1;
+  // These small hacks remove the global margin
+  // and re-apply them as padding.
+  // This way, the margin stays consistent and scrolling works
+  // as intended (there is no overflow left or right)
+  margin-left: -$margin-main-view-left;
+  padding-left: $margin-main-view-left;
+  margin-right: -$margin-main-view-right;
+  padding-right: $margin-main-view-right;
+  margin-top: -$margin-main-view-top;
+  padding-top: $margin-main-view-top;
+}
+
+.selected-card {
+  overflow: auto;
+  flex-grow: 1;
+}
+
+.cards-list {
+  @include adaptive-grid(270px);
+}
+
+.flex-scroll-container {
+  flex-grow: 1;
+  padding-bottom: $bottom-control-padding;
+}
+
+.actions {
+  margin-top: $standard-margin-small;
+  display: flex;
+  gap: $standard-margin-small;
+}
+
+.activity-card {
+  cursor: pointer;
+}
+
+.process-spinner {
+  display: flex;
+  justify-content: center;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="overall-container">  <div class="top-control primary-background">    <mat-form-field>      <mat-label        i18n="          Event-Record label|Record an event for a particular date that is to be          inputted        "        >Date      </mat-label>      <input        matInput        #dateField="ngModel"        [(ngModel)]="date"        required        [matDatepicker]="datePicker"        (dateChange)="setNewDate($event.value)"      />      <mat-datepicker-toggle        matSuffix        [for]="datePicker"        angulartics2On="click"        angularticsCategory="Record Attendance"        angularticsAction="select_date"      ></mat-datepicker-toggle>      <mat-datepicker #datePicker></mat-datepicker>    </mat-form-field>    <div      *ngIf="existingEvents.length >= FILTER_VISIBLE_THRESHOLD"      fxLayout="row wrap"      fxLayoutGap="8px"    >      <app-list-filter        *ngFor="let filter of filterSettings"        [filterConfig]="filter.filterSettings"        [(selectedOption)]="filter.selectedOption"        (selectedOptionChange)="applyFilter(filter, $event)"        angulartics2On="click"        angularticsCategory="Record Attendance"        angularticsAction="filter"        [angularticsLabel]="filter.filterSettings.label"      >      </app-list-filter>    </div>  </div>  <div *ngIf="isLoading" class="process-spinner">    <mat-progress-bar mode="indeterminate"></mat-progress-bar>  </div>  <div class="flex-scroll-container" *ngIf="!isLoading">    <div class="cards-list">      <app-activity-card        class="activity-card"        *ngFor="let event of filteredExistingEvents"        [event]="event"        [recurring]="event.isNewFromActivity"        (click)="selectEvent(event)"      >      </app-activity-card>    </div>    <div class="actions">      <button        mat-stroked-button        (click)="showingAll ? showLess() : showMore()"        angulartics2On="click"        angularticsCategory="Record Attendance"        angularticsAction="show_more"      >        <span *ngIf="showingAll" i18n="Show less entries of a list">          Show less        </span>        <span *ngIf="!showingAll" i18n="Show more entries of a list">          Show more        </span>      </button>      <button        i18n="Not listed|Allows to create a new event"        mat-button        (click)="createOneTimeEvent()"        angulartics2On="click"        angularticsCategory="Record Attendance"        angularticsAction="create_onetime_event"      >        My event is not listed ...      </button>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'ActivitiesOverviewComponent', 'selector': 'app-activities-overview'},{'name': 'ActivityAttendanceSectionComponent', 'selector': 'app-activity-attendance-section'},{'name': 'ActivityCardComponent', 'selector': 'app-activity-card'},{'name': 'AddDayAttendanceComponent', 'selector': 'app-add-day-attendance'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlertComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApplicationLoadingComponent', 'selector': ''},{'name': 'AppVersionComponent', 'selector': 'app-version'},{'name': 'AserComponent', 'selector': 'app-aser'},{'name': 'AttendanceBlockComponent', 'selector': 'app-attendance-block'},{'name': 'AttendanceCalendarComponent', 'selector': 'app-attendance-calendar'},{'name': 'AttendanceDayBlockComponent', 'selector': 'app-attendance-day-block]'},{'name': 'AttendanceDetailsComponent', 'selector': 'app-attendance-details'},{'name': 'AttendanceManagerComponent', 'selector': 'app-attendance-manager'},{'name': 'AttendanceStatusSelectComponent', 'selector': 'app-attendance-status-select'},{'name': 'AttendanceSummaryComponent', 'selector': 'app-attendance-summary'},{'name': 'AttendanceWeekDashboardComponent', 'selector': 'app-attendance-week-dashboard'},{'name': 'BackgroundProcessingIndicatorComponent', 'selector': 'app-background-processing-indicator'},{'name': 'BirthdayDashboardComponent', 'selector': 'app-birthday-dashboard'},{'name': 'BmiBlockComponent', 'selector': 'app-bmi-block'},{'name': 'ChangelogComponent', 'selector': ''},{'name': 'ChildBlockComponent', 'selector': 'app-child-block'},{'name': 'ChildMeetingNoteAttendanceComponent', 'selector': 'app-child-meeting-note-attendance'},{'name': 'ChildrenBmiDashboardComponent', 'selector': 'app-children-bmi-dashboard'},{'name': 'ChildrenCountDashboardComponent', 'selector': 'app-children-count-dashboard'},{'name': 'ChildrenListComponent', 'selector': 'app-children-list'},{'name': 'ChildrenOverviewComponent', 'selector': 'app-children-overview'},{'name': 'ComingSoonComponent', 'selector': 'app-coming-soon'},{'name': 'CompareRevComponent', 'selector': 'app-compare-rev'},{'name': 'ConfirmationDialogComponent', 'selector': 'app-confirmation-dialog'},{'name': 'ConflictResolutionListComponent', 'selector': 'app-conflict-resolution-list'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardShortcutWidgetComponent', 'selector': 'app-dashboard-shortcut-widget'},{'name': 'DashboardWidgetComponent', 'selector': 'app-dashboard-widget'},{'name': 'DataImportComponent', 'selector': 'app-data-import'},{'name': 'DemoDataGeneratingProgressDialogComponent', 'selector': ''},{'name': 'DisabledWrapperComponent', 'selector': 'app-disabled-wrapper'},{'name': 'DisplayCheckmarkComponent', 'selector': 'app-display-tick'},{'name': 'DisplayConfigurableEnumComponent', 'selector': 'app-display-configurable-enum'},{'name': 'DisplayDateComponent', 'selector': 'app-display-date'},{'name': 'DisplayEntityArrayComponent', 'selector': 'app-display-entity-array'},{'name': 'DisplayEntityComponent', 'selector': 'app-display-entity'},{'name': 'DisplayPercentageComponent', 'selector': 'app-display-percentage'},{'name': 'DisplayTextComponent', 'selector': 'app-display-text'},{'name': 'DisplayUnitComponent', 'selector': 'app-display-unit'},{'name': 'EditAgeComponent', 'selector': 'app-edit-age'},{'name': 'EditBooleanComponent', 'selector': 'app-edit-boolean'},{'name': 'EditConfigurableEnumComponent', 'selector': 'app-edit-configurable-enum'},{'name': 'EditDateComponent', 'selector': 'app-edit-date'},{'name': 'EditEntityArrayComponent', 'selector': 'app-edit-entity-array'},{'name': 'EditLongTextComponent', 'selector': 'app-edit-long-text'},{'name': 'EditNumberComponent', 'selector': 'app-edit-number'},{'name': 'EditPhotoComponent', 'selector': 'app-edit-photo'},{'name': 'EditProgressDashboardComponent', 'selector': 'app-edit-progress-dashboard'},{'name': 'EditSingleEntityComponent', 'selector': 'app-edit-single-entity'},{'name': 'EditTextComponent', 'selector': 'app-edit-text'},{'name': 'EducationalMaterialComponent', 'selector': 'app-educational-material'},{'name': 'EntityDetailsComponent', 'selector': 'app-entity-details'},{'name': 'EntityFormComponent', 'selector': 'app-entity-form'},{'name': 'EntityListComponent', 'selector': 'app-entity-list'},{'name': 'EntitySelectComponent', 'selector': 'app-entity-select'},{'name': 'EntitySubrecordComponent', 'selector': 'app-entity-subrecord'},{'name': 'ErrorHintComponent', 'selector': 'app-error-hint'},{'name': 'FaDynamicIconComponent', 'selector': 'app-fa-dynamic-icon'},{'name': 'FilterOverlayComponent', 'selector': 'app-filter-overlay'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'FormDialogWrapperComponent', 'selector': 'app-form-dialog-wrapper'},{'name': 'GroupedChildAttendanceComponent', 'selector': 'app-grouped-child-attendance'},{'name': 'HealthCheckupComponent', 'selector': 'app-health-checkup'},{'name': 'HistoricalDataComponent', 'selector': 'app-historical-data'},{'name': 'LanguageSelectComponent', 'selector': 'app-language-select'},{'name': 'ListFilterComponent', 'selector': 'app-list-filter'},{'name': 'ListPaginatorComponent', 'selector': 'app-list-paginator'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MarkdownPageComponent', 'selector': 'app-markdown-page'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'NoteAttendanceCountBlockComponent', 'selector': 'app-note-attendance-count-block'},{'name': 'NoteDetailsComponent', 'selector': 'app-note-details'},{'name': 'NotesDashboardComponent', 'selector': 'app-no-recent-notes-dashboard'},{'name': 'NotesManagerComponent', 'selector': 'app-notes-manager'},{'name': 'NotesOfChildComponent', 'selector': 'app-notes-of-child'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'ObjectTableComponent', 'selector': 'app-object-table'},{'name': 'PreviousSchoolsComponent', 'selector': 'app-previous-schools'},{'name': 'PrimaryActionComponent', 'selector': 'app-primary-action'},{'name': 'ProgressDashboardComponent', 'selector': 'app-progress-dashboard'},{'name': 'PwaInstallComponent', 'selector': 'app-pwa-install'},{'name': 'ReadonlyFunctionComponent', 'selector': 'app-readonly-function'},{'name': 'RecentAttendanceBlocksComponent', 'selector': 'app-recent-attendance-blocks'},{'name': 'ReportingComponent', 'selector': 'app-reporting'},{'name': 'ReportRowComponent', 'selector': 'app-report-row'},{'name': 'RollCallComponent', 'selector': 'app-roll-call'},{'name': 'RollCallSetupComponent', 'selector': 'app-roll-call-setup'},{'name': 'RollCallTabComponent', 'selector': 'app-roll-call-tab'},{'name': 'RowDetailsComponent', 'selector': 'app-row-details'},{'name': 'SchoolBlockComponent', 'selector': 'app-school-block'},{'name': 'SearchComponent', 'selector': 'app-search'},{'name': 'SelectReportComponent', 'selector': 'app-select-report'},{'name': 'SupportComponent', 'selector': 'app-support'},{'name': 'SyncStatusComponent', 'selector': 'app-sync-status'},{'name': 'UiComponent', 'selector': 'app-ui'},{'name': 'UserAccountComponent', 'selector': 'app-user-account'},{'name': 'ViewTitleComponent', 'selector': 'app-view-title'},{'name': 'WidgetContentComponent', 'selector': 'app-widget-content'}];
+    var DIRECTIVES = [{'name': 'ConfigurableEnumDirective', 'selector': '[appConfigurableEnum]'},{'name': 'DisableEntityOperationDirective', 'selector': '[appDisabledEntityOperation]'},{'name': 'DynamicComponentDirective', 'selector': '[appDynamicComponent]'},{'name': 'ExportDataDirective', 'selector': '[appExportData]'},{'name': 'TabStateMemoDirective', 'selector': '[appTabStateMemo]'},{'name': 'ViewDirective', 'selector': ''}];
+    var ACTUAL_COMPONENT = {'name': 'RollCallSetupComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RollCallSetupComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
