@@ -112,6 +112,6 @@ export class AbilityService {
 
   private updateAbilityWithRules(rules: DatabaseRule[]) {
     this.ability.update(rules as any);
-    this._abilityUpdated.next();
+    this._abilityUpdated.next(undefined);
   }
 }

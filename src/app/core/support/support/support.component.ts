@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Component, Inject, OnInit } from "@angular/core";
 import { SessionService } from "../../session/session-service/session.service";
 import { DatabaseUser } from "../../session/session-service/local-user";
@@ -93,7 +94,7 @@ export class SupportComponent implements OnInit {
     }
     this.window.navigator.serviceWorker.ready
       .then(() =>
-        this.http.get("/ngsw/state", { responseType: "text" }).toPromise()
+        lastValueFrom(this.http.get("/ngsw/state", { responseType: "text" }))
       )
       .then((res) => (this.swLog = res));
   }

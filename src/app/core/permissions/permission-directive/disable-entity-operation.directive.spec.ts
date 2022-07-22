@@ -76,7 +76,7 @@ describe("DisableEntityOperationDirective", () => {
     ).toBeTrue();
 
     mockAbility.cannot.and.returnValue(false);
-    mockUpdateNotifier.next();
+    mockUpdateNotifier.next(undefined);
     testComponent.detectChanges();
 
     expect(

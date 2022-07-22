@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
@@ -43,7 +44,7 @@ export class UserAccountService {
     const headers: HttpHeaders = new HttpHeaders({
       Authorization: "Basic " + btoa(username + ":" + password),
     });
-    return this.http.get(userUrl, { headers: headers }).toPromise();
+    return lastValueFrom(this.http.get(userUrl, { headers: headers }));
   }
 
   private saveNewPasswordToCouchDB(
@@ -55,6 +56,6 @@ export class UserAccountService {
     const headers: HttpHeaders = new HttpHeaders({
       Authorization: "Basic " + btoa(username + ":" + oldPassword),
     });
-    return this.http.put(userUrl, userObj, { headers: headers }).toPromise();
+    return lastValueFrom(this.http.put(userUrl, userObj, { headers: headers }));
   }
 }

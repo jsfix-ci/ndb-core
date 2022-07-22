@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import {
@@ -41,7 +42,7 @@ export class ConfirmationDialogService {
     buttons: ConfirmationDialogButton[] = YesNoButtons,
     closeButton = true
   ): Promise<boolean> {
-    return this.dialog
+    return lastValueFrom(this.dialog
       .open(ConfirmationDialogComponent, {
         data: {
           title: title,
@@ -51,7 +52,6 @@ export class ConfirmationDialogService {
         },
       })
       .afterClosed()
-      .pipe(map((choice) => !!choice))
-      .toPromise();
+      .pipe(map((choice) => !!choice)));
   }
 }

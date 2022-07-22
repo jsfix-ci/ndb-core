@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 /*
  *     This file is part of ndb-core.
  *
@@ -70,9 +71,8 @@ export class AppConfig {
    */
   private loadAppConfigJson(jsonFileLocation: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      this.http
-        .get<IAppConfig>(jsonFileLocation)
-        .toPromise()
+      lastValueFrom(this.http
+        .get<IAppConfig>(jsonFileLocation))
         .then((result) => {
           AppConfig.settings = result;
           resolve();

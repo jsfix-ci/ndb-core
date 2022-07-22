@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { EntityMapperService } from "../../entity/entity-mapper.service";
 import { HttpClient } from "@angular/common/http";
@@ -56,7 +57,7 @@ export class ChildPhotoUpdateService {
 
   private async checkIfFileExists(filename): Promise<boolean> {
     try {
-      await this.httpClient.get(filename).toPromise();
+      await lastValueFrom(this.httpClient.get(filename));
       return true;
     } catch (e) {
       return e.status === 200;

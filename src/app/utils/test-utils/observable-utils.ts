@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { lastValueFrom, Observable } from "rxjs";
 import { first, toArray } from "rxjs/operators";
 
 export interface ObservableMatchers<T> {
@@ -25,10 +25,10 @@ class ObservableMatchersImpl<T> implements ObservableMatchers<T> {
   constructor(private observable: Observable<T>) {}
 
   get first(): jasmine.AsyncMatchers<T, any> {
-    return expectAsync(this.observable.pipe(first()).toPromise());
+    return expectAsync(lastValueFrom(this.observable.pipe(first())));
   }
 
   get inSequence(): jasmine.AsyncMatchers<T[], any> {
-    return expectAsync(this.observable.pipe(toArray()).toPromise());
+    return expectAsync(lastValueFrom(this.observable.pipe(toArray())));
   }
 }

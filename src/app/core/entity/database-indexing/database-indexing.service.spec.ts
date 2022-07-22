@@ -21,7 +21,7 @@ import { EntitySchemaService } from "../schema/entity-schema.service";
 import { expectObservable } from "../../../utils/test-utils/observable-utils";
 import { fakeAsync, flush, tick } from "@angular/core/testing";
 import { SessionService } from "../../session/session-service/session.service";
-import { BehaviorSubject } from "rxjs";
+import { lastValueFrom, BehaviorSubject } from "rxjs";
 import { LoginState } from "../../session/session-states/login-state.enum";
 import { take } from "rxjs/operators";
 
@@ -179,17 +179,15 @@ describe("DatabaseIndexingService", () => {
     };
 
     await service.createIndex(testDesignDoc);
-    let registeredIndices = await service.indicesRegistered
-      .pipe(take(1))
-      .toPromise();
+    let registeredIndices = await lastValueFrom(service.indicesRegistered
+      .pipe(take(1)));
     expect(registeredIndices).toEqual([
       jasmine.objectContaining({ details: "test-index" }),
     ]);
 
     await service.createIndex(testDesignDoc);
-    registeredIndices = await service.indicesRegistered
-      .pipe(take(1))
-      .toPromise();
+    registeredIndices = await lastValueFrom(service.indicesRegistered
+      .pipe(take(1)));
     expect(registeredIndices).toEqual([
       jasmine.objectContaining({ details: "test-index" }),
     ]);

@@ -17,7 +17,7 @@
 
 import { Injectable } from "@angular/core";
 import { Database, QueryOptions } from "../../database/database";
-import { BehaviorSubject, Observable } from "rxjs";
+import { lastValueFrom, BehaviorSubject, Observable } from "rxjs";
 import { BackgroundProcessState } from "../../sync-status/background-process-state.interface";
 import { Entity, EntityConstructor } from "../model/entity";
 import { EntitySchemaService } from "../schema/entity-schema.service";
@@ -190,8 +190,7 @@ export class DatabaseIndexingService {
       return;
     }
 
-    await this._indicesRegistered
-      .pipe(first((processes) => relevantIndexIsReady(processes, indexName)))
-      .toPromise();
+    await lastValueFrom(this._indicesRegistered
+      .pipe(first((processes) => relevantIndexIsReady(processes, indexName))));
   }
 }

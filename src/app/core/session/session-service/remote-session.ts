@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 /*
  *     This file is part of ndb-core.
  *
@@ -61,13 +62,12 @@ export class RemoteSession extends SessionService {
    */
   public async login(username: string, password: string): Promise<LoginState> {
     try {
-      const response = await this.httpClient
+      const response = await lastValueFrom(this.httpClient
         .post<DatabaseUser>(
           `${AppConfig.settings.database.remote_url}_session`,
           { name: username, password: password },
           { withCredentials: true }
-        )
-        .toPromise();
+        ));
       await this.handleSuccessfulLogin(response);
       this.assignDatabaseUser(response);
       localStorage.setItem(
@@ -102,11 +102,10 @@ export class RemoteSession extends SessionService {
    * Logout at the remote database.
    */
   public async logout(): Promise<void> {
-    await this.httpClient
+    await lastValueFrom(this.httpClient
       .delete(`${AppConfig.settings.database.remote_url}_session`, {
         withCredentials: true,
-      })
-      .toPromise()
+      }))
       .catch(() => undefined);
     this.currentDBUser = undefined;
     this.loginState.next(LoginState.LOGGED_OUT);

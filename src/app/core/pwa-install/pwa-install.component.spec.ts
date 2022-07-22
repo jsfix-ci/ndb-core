@@ -4,7 +4,7 @@ import { PwaInstallComponent } from "./pwa-install.component";
 import { PwaInstallModule } from "./pwa-install.module";
 import { PwaInstallService, PWAInstallType } from "./pwa-install.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { Subject } from "rxjs";
+import { lastValueFrom, Subject } from "rxjs";
 import { take } from "rxjs/operators";
 import { MockedTestingModule } from "../../utils/mocked-testing.module";
 import { FontAwesomeTestingModule } from "@fortawesome/angular-fontawesome/testing";
@@ -17,7 +17,7 @@ describe("PwaInstallComponent", () => {
   beforeEach(async () => {
     mockPWAInstallService = jasmine.createSpyObj(
       ["getPWAInstallType", "installPWA", "registerPWAInstallListener"],
-      { canInstallDirectly: pwaInstallResult.pipe(take(1)).toPromise() }
+      { canInstallDirectly: lastValueFrom(pwaInstallResult.pipe(take(1))) }
     );
     mockSnackbar = jasmine.createSpyObj(["openFromTemplate"]);
     await TestBed.configureTestingModule({
@@ -50,7 +50,7 @@ describe("PwaInstallComponent", () => {
   });
 
   it("should call installPWA when no install instructions are defined and remove button once confirmed", fakeAsync(() => {
-    pwaInstallResult.next();
+    pwaInstallResult.next(undefined);
 
     const component = createComponent();
     console.log("created");

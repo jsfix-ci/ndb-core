@@ -59,7 +59,7 @@
     "pouchdb-adapter-memory": "^7.3.0",
     "pouchdb-browser": "^7.3.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.6.7",
+    "rxjs": "^7.5.6",
     "tslib": "^2.4.0",
     "uuid": "^8.3.2",
     "webdav": "^4.8.0",

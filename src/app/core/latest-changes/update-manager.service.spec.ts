@@ -44,7 +44,7 @@ describe("UpdateManagerService", () => {
   it("should show a snackBar that allows to reload the page when an update is available", fakeAsync(() => {
     service.notifyUserWhenUpdateAvailable();
     // notify about new update
-    updateSubject.next();
+    updateSubject.next(undefined);
     tick();
 
     expect(snackBar.open).toHaveBeenCalled();
@@ -78,14 +78,14 @@ describe("UpdateManagerService", () => {
       version
     );
     service.notifyUserWhenUpdateAvailable();
-    updateSubject.next();
+    updateSubject.next(undefined);
 
     expect(
       window.localStorage.getItem(LatestChangesDialogService.VERSION_KEY)
     ).toBe("update-" + version);
 
     // reload is triggered by clicking button on the snackbar
-    snackBarAction.next();
+    snackBarAction.next(undefined);
 
     expect(
       window.localStorage.getItem(LatestChangesDialogService.VERSION_KEY)
